@@ -22,6 +22,7 @@ public class SortingArray {
 
         System.out.println("Enter the number to serching for : ");
         int search = sc.nextInt();
+        sc.close();
         int index = serchIndex(arr, search);
 
         if(index == -1){
