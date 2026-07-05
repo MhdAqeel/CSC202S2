@@ -1,0 +1,6 @@
+Write a program that finds the minimum value in an integer array.
+Write a program that reverses the order of elements in an integer array.
+Write a program that counts the frequency of each element in an integer array and prints the results.
+Write a program that merges two sorted integer arrays into a single sorted array.
+Write a program that sorts the elements in an integer array in ascending order using bubble sorting algorithm.
+Write a program that sorts the elements in an integer array in ascending order using selection sorting algorithm.

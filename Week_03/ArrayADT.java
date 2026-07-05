@@ -53,9 +53,12 @@ public class ArrayADT{
 	}
 	
 	public int search(int element){
-		for (int i= 0 ; i<size-1 ; i++){
-			for(int j=i+1 ; j<)							//complete search
+		for (int i= 0 ; i<size ; i++){
+			if(array[i] == element){
+				return i;
+			}
 		}
+		return -1; // Element not found
 	}
 	
 	//create a deletetion method
@@ -105,5 +108,7 @@ public class ArrayADT{
 		arr2.update(1,10);
 		arr2.printArray();
 		arr2.get(2);
+		System.out.println(arr2.search(3));
+		System.out.println(arr2.search(6));
 	}
 }
