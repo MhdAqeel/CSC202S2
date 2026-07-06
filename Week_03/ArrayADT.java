@@ -62,6 +62,15 @@ public class ArrayADT{
 	}
 	
 	//create a deletetion method
+	public void deleteValue(int value){
+		int index=search(value);
+		if(index<0){
+			System.out.println("the given value is not in the array");
+		}
+		else{
+			delete(index);
+		}
+	}
 	
 	public void printArray(){
 		System.out.print("[ ");
@@ -110,5 +119,16 @@ public class ArrayADT{
 		arr2.get(2);
 		System.out.println(arr2.search(3));
 		System.out.println(arr2.search(6));
+
+
+		ArrayADT arr3 = new ArrayADT(4);
+		arr3.insert(0, 8);
+		arr3.insert(1, 6);
+		arr3.insert(2, 5);
+		arr3.insert(3, 4);
+		arr3.printArray();
+		arr3.deleteValue(10);
+		arr3.deleteValue(8);
+		arr3.printArray();
 	}
 }
