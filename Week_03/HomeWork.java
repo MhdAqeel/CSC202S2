@@ -77,5 +77,7 @@ public class HomeWork {
         printArray(arr2);
         bubbleSort(arr2);
         printArray(arr2);
+        selectionSort(arr);
+        printArray(arr);
     }
 }
