@@ -48,8 +48,12 @@ public class ArrayADT{
 		}
 	}
 	
-	public void get(int index){
-		System.out.println(index+"th element is " + array[index]);
+	public int get(int index){
+		return array[index];	
+	}
+
+	public int getSize(){
+		return size;
 	}
 	
 	public int search(int element){
