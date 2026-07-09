@@ -56,6 +56,15 @@ public class ArrayADT{
 		return size;
 	}
 	
+	public boolean isEmpty(){
+		if(size<=0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	public int search(int element){
 		for (int i= 0 ; i<size ; i++){
 			if(array[i] == element){
@@ -63,6 +72,22 @@ public class ArrayADT{
 			}
 		}
 		return -1; // Element not found
+	}
+	
+	public int searchRecursive(int element , int count){
+		if(isEmpty()){
+			System.out.println("Array is empty");	
+			return -1;
+		}
+		
+		if(count<size){
+			System.out.println("Element is not found");
+			return -1;
+		}
+		if(array[count] == element){
+			return count;
+		}
+		return searchRecursive(element , count+1);
 	}
 	
 	//create a deletetion method
@@ -134,5 +159,12 @@ public class ArrayADT{
 		arr3.deleteValue(10);
 		arr3.deleteValue(8);
 		arr3.printArray();
+		
+		
+		System.out.println("recursive array");
+		arr3.printArray();
+			
+		arr3.searchRecursive(5,0);
 	}
 }
+
