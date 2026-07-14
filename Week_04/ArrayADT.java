@@ -1,4 +1,4 @@
-class ArrayADT {
+public class ArrayADT {
     int[] array;
     int size;
     
