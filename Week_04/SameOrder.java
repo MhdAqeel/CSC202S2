@@ -1,5 +1,3 @@
-
-
 public class SameOrder {
     public static boolean isSameOrder(ArrayADT numbers1, ArrayADT numbers2) {
         if (numbers1.getSize() != numbers2.getSize()) {
