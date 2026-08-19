@@ -51,10 +51,12 @@ class StackListADT {
 		return top.data;
 	}
 	
-	public void display(){
-		while(top!=null){
-			System.out.println(top.data);
-			top = top.next;
+	public void display() {
+		Node current = top;
+
+		while (current != null) {
+			System.out.println(current.data);
+			current = current.next;
 		}
 	}
 	
