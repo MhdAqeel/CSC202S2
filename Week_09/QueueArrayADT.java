@@ -52,6 +52,15 @@ public class QueueArrayADT {
 			*/
 		}
 	}
+
+	public void peek(){
+		if(isEmpty()){
+			System.out.println("Error!!! Queue Under Flow.");
+		}
+		else{
+			System.out.println(queueArray[front]);
+		}
+	}
 	
 	public void display(){
 		if(isEmpty()){
