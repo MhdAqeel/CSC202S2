@@ -1,10 +1,10 @@
 import java.util.Scanner;
 public class StringReverser {
     public static void main(String [] args){
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter a string: ");
-        String input = scanner.nextLine();
-        scanner.close();
+        String input = sc.nextLine();
+        sc.close();
         
         StackArrayADT stack = new StackArrayADT(input.length());
         for(int i = 0; i < input.length(); i++){
