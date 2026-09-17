@@ -1,7 +1,7 @@
-public class Node{
-	private int data;
-	private Node left;
-	private Node right;
+class Node{
+	int data;
+	Node left;
+	Node right;
 	
 	public Node(int data){
 		this.data = data;
@@ -37,6 +37,36 @@ public class BinarySearchTreeADT{
 		return currentNode;
 	}
 	
+	public boolean search(Node root , int data){
+		if(root == null){
+			return false;
+		}
+		
+		if(data == root.data){
+			return true;
+		}
+		else if(data<root.data){
+			return search(root.left,data);
+		}
+		else{
+			return search(root.right,data);
+		}
+	}
+	
+	public void findMinumum(Node currentNode){
+		while(currentNode.left != null){
+			currentNode = currentNode.left;
+		}
+		System.out.println("minimum is " + currentNode.data);
+	}
+	
+	public void finMaximum(Node currentNode){
+		while(currentNode.right != null){
+			currentNode = currentNode.right;
+		}
+		System.out.println("Maximum is " + currentNode.data);
+	}
+	/*
 	// Public API method
     public void inOrderTraversal() {
         inOrderTraversal(root);
@@ -50,7 +80,32 @@ public class BinarySearchTreeADT{
             System.out.print(currentNode.data + " ");
             inOrderTraversal(currentNode.right);
         }
+    }*/
+	
+	public void inOrderTraversal(Node currentNode) {
+        if (currentNode != null) {
+            inOrderTraversal(currentNode.left);
+            System.out.print(currentNode.data + " ");
+            inOrderTraversal(currentNode.right);
+        }
     }
+	
+	public void preOrderTraversal(Node currentNode){
+		if (currentNode != null) {
+            System.out.print(currentNode.data + " ");
+			preOrderTraversal(currentNode.left);
+            preOrderTraversal(currentNode.right);
+        }
+	}
+	
+	public void postOrderTraversal(Node currentNode){
+		if (currentNode != null) {
+            postOrderTraversal(currentNode.right);
+			System.out.print(currentNode.data + " ");
+			postOrderTraversal(currentNode.left);    
+        }
+	}
+	
   
 	public static void main (String [] args){
 		BinarySearchTreeADT bst = new BinarySearchTreeADT();
@@ -62,6 +117,22 @@ public class BinarySearchTreeADT{
 		bst.root = bst.insert(bst.root , 60);
 		bst.root = bst.insert(bst.root , 80);
 		
-		bst.inOrderTraversal();
+		System.out.print("Inorder traversal : ");
+		bst.inOrderTraversal(bst.root);
+		System.out.println();
+		
+		System.out.print("Preorder traversal : ");
+		bst.preOrderTraversal(bst.root);
+		System.out.println();
+		
+		System.out.print("postorder traversal : ");
+		bst.postOrderTraversal(bst.root);
+		System.out.println();
+		
+		System.out.println("is 50 in here ? "+bst.search(bst.root,50));
+		System.out.println("is 100 in here ? "+bst.search(bst.root,100));
+		
+		bst.findMinumum(bst.root);
+		bst.finMaximum(bst.root);
 	}
 }
