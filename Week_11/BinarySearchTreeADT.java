@@ -66,6 +66,47 @@ public class BinarySearchTreeADT{
 		}
 		System.out.println("Maximum is " + currentNode.data);
 	}
+	
+	public static int minValue(Node currentNode){
+		while(currentNode.left != null){
+			currentNode = currentNode.left;
+		}
+		return currentNode.data;
+	}
+	
+	public Node delete(Node currentNode , int data){
+		if (currentNode == null){
+			return currentNode;
+		}
+		
+		if(data<currentNode.data){
+			currentNode.left = delete(currentNode.left , data);
+		}
+		else if(data>currentNode.data){
+			currentNode.right = delete(currentNode.right , data);
+		}
+		else{
+			//case 1 leaf node
+			if(currentNode.left==null && currentNode.right==null){
+				currentNode == null;
+			}
+			//case 2 only one child
+			else if(currentNode.left == null){
+				currentNode = currentNode.right;
+			}
+			else if(currentNode.right == null){
+				currentNode = currentNode.left;
+			}
+			//case 3 node has 2 children
+			else{
+				int minValue = minValue(currentNode.right);
+				currentNode.data = minValue;
+				currentNode.right = delete(currentNode , minValue);
+			}
+		}
+		return currentNode;
+	}
+	
 	/*
 	// Public API method
     public void inOrderTraversal() {
@@ -134,5 +175,7 @@ public class BinarySearchTreeADT{
 		
 		bst.findMinumum(bst.root);
 		bst.finMaximum(bst.root);
+		
+		bst.delete(bst.root , 30);
 	}
 }
