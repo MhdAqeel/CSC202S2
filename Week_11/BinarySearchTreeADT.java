@@ -88,7 +88,7 @@ public class BinarySearchTreeADT{
 		else{
 			//case 1 leaf node
 			if(currentNode.left==null && currentNode.right==null){
-				currentNode == null;
+				currentNode = null;
 			}
 			//case 2 only one child
 			else if(currentNode.left == null){
@@ -101,7 +101,7 @@ public class BinarySearchTreeADT{
 			else{
 				int minValue = minValue(currentNode.right);
 				currentNode.data = minValue;
-				currentNode.right = delete(currentNode , minValue);
+				currentNode.right = delete(currentNode.right , minValue);
 			}
 		}
 		return currentNode;
@@ -122,7 +122,7 @@ public class BinarySearchTreeADT{
             inOrderTraversal(currentNode.right);
         }
     }*/
-	
+	// left -> root -> right
 	public void inOrderTraversal(Node currentNode) {
         if (currentNode != null) {
             inOrderTraversal(currentNode.left);
@@ -131,6 +131,7 @@ public class BinarySearchTreeADT{
         }
     }
 	
+	// root -> left -> right
 	public void preOrderTraversal(Node currentNode){
 		if (currentNode != null) {
             System.out.print(currentNode.data + " ");
@@ -139,11 +140,12 @@ public class BinarySearchTreeADT{
         }
 	}
 	
+	// left -> right -> root
 	public void postOrderTraversal(Node currentNode){
 		if (currentNode != null) {
-            postOrderTraversal(currentNode.right);
+			postOrderTraversal(currentNode.left);
+			postOrderTraversal(currentNode.right);
 			System.out.print(currentNode.data + " ");
-			postOrderTraversal(currentNode.left);    
         }
 	}
 	
@@ -170,12 +172,18 @@ public class BinarySearchTreeADT{
 		bst.postOrderTraversal(bst.root);
 		System.out.println();
 		
-		System.out.println("is 50 in here ? "+bst.search(bst.root,50));
-		System.out.println("is 100 in here ? "+bst.search(bst.root,100));
+		System.out.println("is 40 in here ? "+bst.search(bst.root,40));
+		System.out.println("is 90 in here ? "+bst.search(bst.root,90));
 		
 		bst.findMinumum(bst.root);
 		bst.finMaximum(bst.root);
 		
+		bst.delete(bst.root , 80);
+		bst.delete(bst.root ,70);
 		bst.delete(bst.root , 30);
+
+		System.out.print("Inorder traversal after deletion : ");
+		bst.inOrderTraversal(bst.root);
+
 	}
 }
