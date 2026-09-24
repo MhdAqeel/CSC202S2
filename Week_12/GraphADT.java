@@ -4,11 +4,12 @@ public class GraphADT{
 	int[][] matrix;
 	
 	public GraphADT(int capacity){
+		this.capacity = capacity;
 		matrix = new int[capacity][capacity];
 	}
 	
 	public boolean isEmpty(){
-		return numberOFVertices ==0;
+		return numberOFVertices == 0;
 	}
 	
 	public boolean isFull(){
@@ -18,8 +19,9 @@ public class GraphADT{
 	public void insertVertices(){
 		if(isFull()){
 			System.out.println("Graph is full");
+			return;
 		}
-		numberOfVertices++;
+		numberOFVertices++;
 	}
 	
 	public void insertEdges(int source , int destination , int weight){
@@ -34,11 +36,12 @@ public class GraphADT{
 	}
 	
 	public void deleteVertice(int vertex){
-		if(vertex >=0 && vertex< numberOfVertices){
-			for (int i =0; i<numberOfVertices ; i++){
+		if(vertex >=0 && vertex< numberOFVertices){
+			for (int i =0; i<numberOFVertices ; i++){
 				matrix[i][vertex] = 0;
 				matrix[vertex][i] = 0;
 			}
+			numberOFVertices--;
 		}
 		else{
 			System.out.println("invalid vertex");
@@ -49,7 +52,7 @@ public class GraphADT{
 	public void deleteEdge(int source , int destination){
 		if(source >= 0 && source < numberOFVertices && destination >= 0 && destination < numberOFVertices){
 			matrix[source][destination] = 0;
-			matirx[destination][source] = 0;
+			matrix[destination][source] = 0;
 		}
 		else{
 			System.out.println("Invalid vertices");
@@ -58,22 +61,23 @@ public class GraphADT{
 	}
 	
 	public boolean isEdge(int source , int destination){
-		return matrix[source][destination] != 0;
+		if(source >= 0 && source < numberOFVertices && destination >= 0 && destination < numberOFVertices){
+			return matrix[source][destination] != 0;
+		}
+		return false;
 	}
 	
-	public void traverceGraph(){
-		for(int i =0 ; i<numberOfVertices ; i++){
-			System.out.print(i + "connected to : ")
-			for(int j=0 ; j<numberOfVertices; j++){
+	public void traverseGraph(){
+		for(int i =0 ; i<numberOFVertices ; i++){
+			System.out.print(i + " connected to : ");
+			for(int j=0 ; j<numberOFVertices; j++){
 				if(matrix[i][j] != 0){
-					System.out.print(j + " " );
+					System.out.print(j + " ");
 				}
 			}
-			System.out.print();
+			System.out.println();
 		}
 	}
-	
-	
 	
 	public static void main (String [] args){
 		GraphADT graph = new GraphADT(4);
@@ -81,7 +85,7 @@ public class GraphADT{
 		graph.insertVertices();
 		graph.insertVertices();
 		graph.insertVertices();
-		graph.print();
+		graph.traverseGraph();
 		
 	}
 }
