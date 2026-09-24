@@ -57,6 +57,10 @@ public class GraphADT{
 		
 	}
 	
+	public boolean isEdge(int source , int destination){
+		return matrix[source][destination] != 0;
+	}
+	
 	public void traverceGraph(){
 		for(int i =0 ; i<numberOfVertices ; i++){
 			System.out.print(i + "connected to : ")
